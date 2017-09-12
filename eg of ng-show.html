@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>
+		Angular
+	</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<script>
+	app=angular.module('app',[]) 
+	// if we will not declare app as var app then we do not need a ; at the end 
+	.controller('ctrl',function($scope){ 
+	// we are not declaring app as var app in the above statement so we do not need to write app.controller in this statement only .controller will work
+		$scope.name='';
+		$scope.character=5;
+	});
+	
+</script>
+</head>
+<body>
+	<div ng-controller="ctrl">
+		<input type="text" ng-model="name">
+	<div ng-show="name.length!==character">
+		Must Enter 5 Characters	
+	</div>
+	</div>	
+</body>
+</html>

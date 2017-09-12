@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>
+		Angular
+	</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+	  var app=angular.module('app', [])	
+	  app.controller('ctrl', function($scope){
+	  	$scope.count=0;
+	  	$scope.myfunction=function(){
+	  		
+	  		if($scope.count>9)
+	  		{
+	  			$scope.count=0;
+	  		}
+	  		else
+	  		{
+	  			$scope.count++;
+	  		}		  		
+	  	}
+	  });
+	
+</script>
+
+</head>
+<body>
+	<div ng-controller="ctrl">
+	<button type="button" ng-click="myfunction()">Click</button>
+		<h1>{{count}}</h1>		
+	</div>
+	</div>
+</body>
+</html>

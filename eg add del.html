@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>
+		Angular
+	</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+	var app=angular.module('app',[]);
+	app.controller('ctrl',['$scope', function($scope){
+		$scope.names=['Ami','Dhanish', 'Hernesh', 'Arsh', 'Manul', 'Aafaq'];
+		
+		$scope.AddToList=function(){
+			$scope.names.push($scope.newname);
+		}
+
+		$scope.DelFromList=function(name){
+			var i=$scope.names.indexOf(name);
+			$scope.names.splice(i, 1);
+		};
+	}]);
+	
+</script>
+</head>
+<body>
+	<div ng-controller="ctrl">
+		<ul ng-repeat="name in names">
+			<li style="margin-left: 600px;">{{name}}<button style="margin-left: 10px;" type="button" ng-click="DelFromList(name)">Del</button></li>		
+		</ul>
+		<input style="margin-left: 600px;" type="text" ng-model="newname">
+		<button type="button" ng-click="AddToList()">Add</button>		
+	</div>
+</body>
+</html>

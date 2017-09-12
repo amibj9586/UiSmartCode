@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>
+		Angular
+	</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<script> 
+    angular.module("app",[])
+       .controller("ctrl",function($scope,$q){
+        $scope.addone=function(num){
+         var q=$q.defer()
+           $scope.step++;
+          if(angular.isNumber(num)){
+          //setTimeout(function(){q.reslove(num+1)},1000)
+            q.reslove(num+1)
+          }
+          else{
+           q.reject('NaN');
+          }
+          return q.promise
+          }
+          $scope.step=0;
+          $scope.myValue=0;
+          $scope.promise=$scope.addone($scope.myValue);
+          $scope.promise.then(
+           function(v){$scope.myValue=v},
+           function(err){$scope.myValue=err}
+           )
+     });
+           $scope.promise.then(
+           function(v){ return $scope.addone(v)},
+           function(err){return err}
+           )
+           .then(
+           function(v){$scope.myValue=v},
+           function(err){$scope.myValue=err}
+           )
+       $scope.promise
+       .then(function(v){ return $scope.addone(v)})
+       .then(function(v){ return $scope.addone(v)})
+       .then(function(v){ return $scope.addone(v)})
+       .then(function(v){ return $scope.addone(v)})
+       .then(
+           function(v){$scope.myValue=v},
+           function(err){$scope.myValue=err}
+           )
+</script>
+</head>
+
+<body>    
+    <div ng-controller='ctrl'>
+        <h1>{{myValue}}</h1>
+        <h2>{{step}}</h2>
+    </div>
+</body>
+</html>

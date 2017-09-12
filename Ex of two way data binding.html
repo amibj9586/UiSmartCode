@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>
+		Angular
+	</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script>
+	angular.module('app', [])
+	.controller('ctrl', function($scope){
+		$scope.fname="Ami";
+		$scope.lname="Jariwala"
+	});	
+	
+</script>
+
+</head>
+<body>
+	<div ng-controller="ctrl">
+		<input type="text" ng-model="fname">
+		<h1>{{fname}}</h1>
+		<input type="text" ng-model="lname">
+		<h1>{{lname}}</h1>
+	</div>
+</body>
+</html>
